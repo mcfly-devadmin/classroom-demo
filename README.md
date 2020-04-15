@@ -11,3 +11,10 @@ classroom-demo
 Visit [openvidu.io/demos](http://openvidu.io/demos#4)
 
 [OpenViduLogo]: https://secure.gravatar.com/avatar/5daba1d43042f2e4e85849733c8e5702?s=120
+
+FEATURES:
+* support mobile and desktop
+* text chat
+* user registration
+* moderation access to rooms through database
+* video rooms for two or more peoples

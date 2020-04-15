@@ -121,11 +121,9 @@ public class SessionController {
 		}
 
 		Session session = this.lessonIdSession.get(id_lesson);
-		OpenViduRole role = user.hasRoleTeacher() ? OpenViduRole.PUBLISHER : OpenViduRole.SUBSCRIBER;
 
 		JSONObject responseJson = new JSONObject();
-		TokenOptions tokenOpts = new TokenOptions.Builder().role(role)
-				.data("SERVER=" + this.user.getLoggedUser().getName()).build();
+		TokenOptions tokenOpts = new TokenOptions.Builder().data("SERVER=" + this.user.getLoggedUser().getName()).build();
 		try {
 			String token = this.lessonIdSession.get(id_lesson).generateToken(tokenOpts);
 

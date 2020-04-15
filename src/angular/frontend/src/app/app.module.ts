@@ -4,6 +4,8 @@ import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import 'hammerjs';
 
@@ -23,6 +25,7 @@ import { AuthenticationService } from './services/authentication.service';
 import { UserService } from './services/user.service';
 import { LessonService } from './services/lesson.service';
 import { VideoSessionService } from './services/video-session.service';
+import {ChatComponent} from "./components/chat/chat.component";
 
 @NgModule({
   declarations: [
@@ -34,6 +37,7 @@ import { VideoSessionService } from './services/video-session.service';
     VideoSessionComponent,
     ErrorMessageComponent,
     JoinSessionDialogComponent,
+    ChatComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,6 +47,8 @@ import { VideoSessionService } from './services/video-session.service';
     MaterialModule,
     FlexLayoutModule,
     routing,
+    MatBadgeModule,
+    MatTooltipModule,
   ],
   providers: [
     AuthenticationService,

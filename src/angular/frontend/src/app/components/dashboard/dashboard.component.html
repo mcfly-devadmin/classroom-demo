@@ -6,9 +6,7 @@
   <div class="div-inner-main" [style.xs]="{'width': '100%'}">
 
     <div *ngIf="!addingLesson" fxLayout="row" fxLayoutAlign="center center">
-      <div fxFlex="80%">MY LESSONS</div>
-      <mat-icon fxFlex="20%" fxLayoutAlign="end center" *ngIf="authenticationService.isTeacher()" (click)="addingLesson = true"
-        [title]="'Add lesson'">add_circle_outline</mat-icon>
+      <div fxFlex="80%">MY ROOMS</div>
     </div>
 
     <div *ngIf="addingLesson">
@@ -29,18 +27,12 @@
       <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
         <span fxFlex="70%" class="title">{{lesson.title}}</span>
         <span fxFlex="70%" *ngIf="authenticationService.isStudent()" class="teacher">{{lesson.teacher.nickName}}</span>
-        <mat-icon fxFlex="15%" *ngIf="authenticationService.isTeacher()" (click)="goToLessonDetails(lesson)" [title]="'Modify lesson'">mode_edit</mat-icon>
-        <mat-icon fxFlex="15%" (click)="goToLesson(lesson)" [title]="'Go to lesson!'">play_circle_filled</mat-icon>
+        <mat-icon fxFlex="15%" (click)="goToLesson(lesson)" [title]="'Go to room!'">play_circle_filled</mat-icon>
       </div>
     </mat-card>
 
     <div *ngIf="lessons.length === 0 && authenticationService.isStudent() && !addingLesson">
-      <app-error-message [errorTitle]="'You do not have any lessons'" [errorContent]="'Your teacher must invite you'"
-        [customClass]="'warning'" [closable]="false"></app-error-message>
-    </div>
-
-    <div *ngIf="lessons.length === 0 && authenticationService.isTeacher() && !addingLesson">
-      <app-error-message [errorTitle]="'You do not have any lessons'" [errorContent]="'You can add one by clicking on the icon above'"
+      <app-error-message [errorTitle]="'You do not have any rooms'" [errorContent]="'Your should be invited'"
         [customClass]="'warning'" [closable]="false"></app-error-message>
     </div>
 

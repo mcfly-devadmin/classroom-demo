@@ -3,7 +3,35 @@
     <mat-icon class="right-btn" (click)="toggleFullScreen()" [title]="'Fullscreen'">{{fullscreenIcon}}</mat-icon>
     <mat-icon *ngIf="authenticationService.isTeacher()" class="right-btn" (click)="toggleLocalVideo()" [title]="'Toggle video'">{{videoIcon}}</mat-icon>
     <mat-icon *ngIf="authenticationService.isTeacher()" class="right-btn" (click)="toggleLocalAudio()" [title]="'Toggle audio'">{{audioIcon}}</mat-icon>
+    <mat-icon
+      matBadge="{{ newMessages }}"
+      [matBadgeHidden]="newMessages === 0"
+      matBadgePosition="above before"
+      matTooltip="Chat"
+      matBadgeColor="accent"
+      (click)="toggleChat()"
+    >chat</mat-icon>
     <h1>{{lesson?.title}}</h1>
 </div>
-<div id="publisher"></div>
-<div id="subscriber"></div>
+<mat-sidenav
+  #sidenav
+  mode="{{sidenavMode}}"
+  position="end"
+  class="sidenav-chat"
+  [class.boundsLight]="lightTheme"
+  fixedInViewport="true"
+  fixedTopGap="80"
+  fixedBottomGap="0"
+>
+  <chat-component
+    #chatComponent
+    [session]="this.session"
+    [user]="this.authenticationService.getCurrentUser()"
+    [chatOpened]="chatOpened"
+    [lightTheme]="lightTheme"
+    [messageList]="messageList"
+    (closeChat)="toggleChat()"
+  ></chat-component>
+</mat-sidenav>
+<div #videos id="videos">
+</div>
